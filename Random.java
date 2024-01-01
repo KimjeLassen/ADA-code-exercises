@@ -46,6 +46,24 @@ public class Random {
         }
         return null;
     }
+    public static int secondLargest (int[] values) {
+        int length = values.length;
+        if (length < 2) {
+            throw new IllegalArgumentException("The array must have at least two elements.");
+        }
+        if (length == 2) {
+            return (values[0] < values[1]) ? values[0] : values[1];
+        }
+        int[] newValues = new int[length - 1];
+        int skip = (values[0] < values[length - 1]) ? values[0] : values[length - 1];
+        int i = 0;
+        for (int v : values) {
+           if (v != skip) {
+               newValues[i] = v; i++;
+           }
+        }
+        return secondLargest(newValues);
+    }
     public static void main(String[] args) {
         System.out.println(mostFrequentLetter("cvccsdfsdvsdvsdvsdvdsvsdgerwgewfewqfhwifjsinskcsd"));
         
