@@ -77,9 +77,21 @@ public class Exercise1 {
             return true;
         }
     }
+    public static int logTo(int n) {
+        // Whenever n reaches 1 it returns 0 because 2^0 = 1 and this is our base case
+        if (n == 1) {
+            return 0;
+        }
+        // Eventually when n reaches 1 and it returns 0, the calls will slowly trickle
+        // back and the first call of the function will end up returning the amount of
+        // times the function was called.
+        else {
+            return 1 + logTo(n / 2);
+        }
+    }
     public static void main(String[] args) {
         String string = "Hello my nwords";
         int arr[] = {1,2,3,4,5,6,7,8,10,45};
-        System.out.println(binarySearch(arr, 46));
+        System.out.println(logTo(32));
         }
 }
